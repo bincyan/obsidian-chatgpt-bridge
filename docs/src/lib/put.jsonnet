@@ -5,13 +5,27 @@
   summary: 'Update the content of the active file open in Obsidian.\n',
   parameters: [],
   requestBody: {
-    description: 'Content of the file you would like to upload.',
+    description: 'Content of the file you would like to upload. When using `application/json`, place your note text in the `content` property and any additional properties will be written to frontmatter.',
     required: true,
     content: {
       'text/markdown': {
         schema: {
           type: 'string',
           example: '# This is my document\n\nsomething else here\n',
+        },
+      },
+      'application/json': {
+        schema: {
+          type: 'object',
+          required: ['content'],
+          properties: {
+            content: { type: 'string' },
+          },
+          additionalProperties: { type: 'string' },
+          example: {
+            content: '# My document',
+            foo: 'bar',
+          },
         },
       },
       '*/*': {
