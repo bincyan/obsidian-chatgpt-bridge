@@ -16,7 +16,7 @@ std.manifestYamlDoc(
     openapi: '3.0.2',
     info: {
       title: 'Local REST API for Obsidian',
-      description: "You can use this interface for trying out your Local REST API in Obsidian.\n\nBefore trying the below tools, you will want to make sure you press the \"Authorize\" button below and provide the API Key you are shown when you open the \"Local REST API\" section of your Obsidian settings.  All requests to the API require a valid API Key; so you won't get very far without doing that.\n\nWhen using this tool you may see browser security warnings due to your browser not trusting the self-signed certificate the plugin will generate on its first run.  If you do, you can make those errors disappear by adding the certificate as a \"Trusted Certificate\" in your browser or operating system's settings.\n",
+      description: "Interact with your Obsidian notes through this local REST API.\n\nPress the 'Authorize' button and supply your API key from plugin settings before sending requests. If your browser warns about the self-signed certificate, add it as a trusted certificate.",
       version: '1.0',
     },
     servers: [
