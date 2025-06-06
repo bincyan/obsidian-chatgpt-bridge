@@ -21,6 +21,7 @@ import responseTime from "response-time";
 import queryString from "query-string";
 import WildcardRegexp from "glob-to-regexp";
 import path from "path";
+import { dump } from "js-yaml";
 import {
   applyPatch,
   ContentType,
@@ -365,8 +366,24 @@ export default class RequestHandler {
       // the folder/file already exists, but we don't care
     }
 
+    const contentType = req.get("Content-Type") || "";
     if (typeof req.body === "string") {
       await this.app.vault.adapter.write(filepath, req.body);
+    } else if (
+      contentType.includes("application/json") &&
+      typeof req.body === "object" &&
+      !Buffer.isBuffer(req.body)
+    ) {
+      const { content = "", ...attrs } = req.body as {
+        content?: string;
+        [key: string]: unknown;
+      };
+      let data = content;
+      if (Object.keys(attrs).length) {
+        const frontmatter = dump(attrs).trimEnd();
+        data = `---\n${frontmatter}\n---\n${content}`;
+      }
+      await this.app.vault.adapter.write(filepath, data);
     } else {
       await this.app.vault.adapter.writeBinary(
         filepath,
