@@ -248,18 +248,21 @@ describe("requestHandler", () => {
       expect(decoder.decode(data)).toEqual(arbitraryBytes);
     });
 
-    test("non-bytes content", async () => {
+    test("JSON body with attributes", async () => {
       const arbitraryFilePath = "somefile.md";
-      const arbitraryBytes = "bytes";
+      const body = { content: "bytes", foo: "bar" };
 
       await request(server)
         .put(`/vault/${arbitraryFilePath}`)
         .set("Content-Type", "application/json")
         .set("Authorization", `Bearer ${API_KEY}`)
-        .send(arbitraryBytes)
-        .expect(400);
+        .send(body)
+        .expect(204);
 
-      expect(app.vault.adapter._write).toBeUndefined();
+      expect(app.vault.adapter._write).toEqual([
+        arbitraryFilePath,
+        "---\nfoo: bar\n---\nbytes",
+      ]);
     });
   });
 

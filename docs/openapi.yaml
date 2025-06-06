@@ -413,10 +413,23 @@ paths:
             schema:
               example: |
                 # This is my document
-                
+
                 something else here
               type: "string"
-        description: "Content of the file you would like to upload."
+          application/json:
+            schema:
+              type: "object"
+              required:
+                - content
+              additionalProperties:
+                type: "string"
+              properties:
+                content:
+                  type: "string"
+              example:
+                content: "# My document"
+                foo: "bar"
+        description: "Content of the file you would like to upload. When using `application/json`, place your note text in the `content` property and any additional properties will be written to frontmatter."
         required: true
       responses:
         "204":
@@ -909,10 +922,23 @@ paths:
             schema:
               example: |
                 # This is my document
-                
+
                 something else here
               type: "string"
-        description: "Content of the file you would like to upload."
+          application/json:
+            schema:
+              type: "object"
+              required:
+                - content
+              additionalProperties:
+                type: "string"
+              properties:
+                content:
+                  type: "string"
+              example:
+                content: "# My document"
+                foo: "bar"
+        description: "Content of the file you would like to upload. When using `application/json`, place your note text in the `content` property and any additional properties will be written to frontmatter."
         required: true
       responses:
         "204":
