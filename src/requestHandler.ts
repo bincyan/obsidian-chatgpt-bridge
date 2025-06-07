@@ -502,6 +502,15 @@ export default class RequestHandler {
     const targetType = req.get("Target-Type");
     const rawTarget = decodeURIComponent(req.get("Target"));
     const contentType = req.get("Content-Type");
+    let bodyContent: unknown = req.body;
+    if (
+      contentType?.includes("application/json") &&
+      typeof req.body === "object" &&
+      !Buffer.isBuffer(req.body) &&
+      typeof (req.body as any).content === "string"
+    ) {
+      bodyContent = (req.body as any).content;
+    }
     const createTargetIfMissing = req.get("Create-Target-If-Missing") == "true";
     const applyIfContentPreexists =
       req.get("Apply-If-Content-Preexists") == "true";
@@ -556,7 +565,7 @@ export default class RequestHandler {
       targetType: targetType as PatchTargetType,
       target,
       contentType: contentType as ContentType,
-      content: req.body,
+      content: bodyContent,
       applyIfContentPreexists,
       trimTargetWhitespace,
       createTargetIfMissing,
@@ -619,7 +628,20 @@ export default class RequestHandler {
       return;
     }
 
-    if (typeof req.body != "string") {
+    const contentType = req.get("Content-Type") || "";
+    let bodyContent: string | undefined;
+    if (typeof req.body === "string") {
+      bodyContent = req.body;
+    } else if (
+      contentType.includes("application/json") &&
+      typeof req.body === "object" &&
+      !Buffer.isBuffer(req.body) &&
+      typeof (req.body as any).content === "string"
+    ) {
+      bodyContent = (req.body as any).content;
+    }
+
+    if (bodyContent === undefined) {
       this.returnCannedResponse(res, {
         errorCode: ErrorCode.TextContentEncodingRequired,
       });
@@ -641,7 +663,7 @@ export default class RequestHandler {
       }
     }
 
-    fileContents += req.body;
+    fileContents += bodyContent;
 
     await this.app.vault.adapter.write(filepath, fileContents);
 
