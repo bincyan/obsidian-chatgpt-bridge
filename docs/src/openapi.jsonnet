@@ -127,39 +127,6 @@ std.manifestYamlDoc(
       },
     ],
     paths: {
-      '/active/': {
-        get: Get {
-          tags: ['Active File'],
-          summary: 'Return the content of the active file open in Obsidian.\n',
-          description: 'Returns the content of the currently active file in Obsidian.\n\nIf you specify the header `Accept: application/vnd.olrapi.note+json`, will return a JSON representation of your note including parsed tag and frontmatter data as well as filesystem metadata.  See "responses" below for details.\n',
-        },
-        put: Put {
-          tags: [
-            'Active File',
-          ],
-          summary: 'Update the content of the active file open in Obsidian.\n',
-        },
-        post: Post {
-          tags: [
-            'Active File',
-          ],
-          summary: 'Append content to the active file open in Obsidian.\n',
-          description: "Appends content to the end of the currently-open note.\n\nIf you would like to insert text relative to a particular heading instead of appending to the end of the file, see 'patch'.\n",
-        },
-        patch: Patch {
-          tags: [
-            'Active File',
-          ],
-          summary: 'Partially update content in the currently open note.\n',
-          description: 'Inserts content into the currently-open note relative to a heading, block refeerence, or frontmatter field within that document.\n\n' + Patch.description,
-        },
-        delete: Delete {
-          tags: [
-            'Active File',
-          ],
-          summary: 'Deletes the currently-active file in Obsidian.\n',
-        },
-      },
       '/vault/{filename}': {
         get: Get {
           tags: [
