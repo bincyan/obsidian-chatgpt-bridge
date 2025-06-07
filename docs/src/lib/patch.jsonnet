@@ -105,8 +105,15 @@
       },
       'application/json': {
         schema: {
-          type: 'string',
-          example: "['one', 'two']",
+          oneOf: [
+            { type: 'string', example: "['one', 'two']" },
+            {
+              type: 'object',
+              required: ['content'],
+              properties: { content: { type: 'string' } },
+              example: { content: 'more text' },
+            },
+          ],
         },
       },
     },

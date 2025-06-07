@@ -484,8 +484,17 @@ paths:
         content:
           application/json:
             schema:
-              example: "['one', 'two']"
-              type: "string"
+              oneOf:
+                - type: "string"
+                  example: "['one', 'two']"
+                - type: "object"
+                  required:
+                    - content
+                  properties:
+                    content:
+                      type: "string"
+                  example:
+                    content: "more text"
           text/markdown:
             schema:
               example: |
@@ -545,9 +554,19 @@ paths:
             schema:
               example: |
                 # This is my document
-                
+
                 something else here
               type: "string"
+          application/json:
+            schema:
+              type: "object"
+              required:
+                - content
+              properties:
+                content:
+                  type: "string"
+              example:
+                content: "more text"
         description: "Content you would like to append."
         required: true
       responses:
@@ -958,8 +977,17 @@ paths:
         content:
           application/json:
             schema:
-              example: "['one', 'two']"
-              type: "string"
+              oneOf:
+                - type: "string"
+                  example: "['one', 'two']"
+                - type: "object"
+                  required:
+                    - content
+                  properties:
+                    content:
+                      type: "string"
+                  example:
+                    content: "more text"
           text/markdown:
             schema:
               example: |
@@ -1037,9 +1065,19 @@ paths:
             schema:
               example: |
                 # This is my document
-                
+
                 something else here
               type: "string"
+          application/json:
+            schema:
+              type: "object"
+              required:
+                - content
+              properties:
+                content:
+                  type: "string"
+              example:
+                content: "more text"
         description: "Content you would like to append."
         required: true
       responses:
@@ -1599,8 +1637,17 @@ paths:
         content:
           application/json:
             schema:
-              example: "['one', 'two']"
-              type: "string"
+              oneOf:
+                - type: "string"
+                  example: "['one', 'two']"
+                - type: "object"
+                  required:
+                    - content
+                  properties:
+                    content:
+                      type: "string"
+                  example:
+                    content: "more text"
           text/markdown:
             schema:
               example: |
