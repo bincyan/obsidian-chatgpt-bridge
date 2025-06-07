@@ -10,6 +10,16 @@
           example: '# This is my document\n\nsomething else here\n',
         },
       },
+      'application/json': {
+        schema: {
+          type: 'object',
+          required: ['content'],
+          properties: {
+            content: { type: 'string' },
+          },
+          example: { content: 'more text' },
+        },
+      },
     },
   },
   responses: {
