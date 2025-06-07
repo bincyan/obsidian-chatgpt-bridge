@@ -13,7 +13,7 @@ local ParamYear = import 'year.param.jsonnet';
 
 std.manifestYamlDoc(
   {
-    openapi: '3.0.2',
+    openapi: '3.1.0',
     info: {
       title: 'Local REST API for Obsidian',
       description: "Interact with your Obsidian notes through this local REST API.\n\nPress the 'Authorize' button and supply your API key from plugin settings before sending requests. If your browser warns about the self-signed certificate, add it as a trusted certificate.",
