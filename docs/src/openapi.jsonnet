@@ -133,6 +133,7 @@ std.manifestYamlDoc(
             'Vault Files',
           ],
           summary: 'Return the content of a single file in your vault.\n',
+          operationId: 'get_vault_filename',
           description: 'Returns the content of the specified file if it exists. Use `Accept: application/vnd.olrapi.note+json` to receive a JSON representation including tags, frontmatter and metadata.\n',
           parameters+: [ParamPath],
         },
@@ -141,6 +142,7 @@ std.manifestYamlDoc(
             'Vault Files',
           ],
           summary: 'Create a new file in your vault or update the content of an existing one.\n',
+          operationId: 'put_vault_filename',
           description: 'Creates a new file in your vault or updates the content of an existing one if the specified file already exists.\n',
           parameters+: [ParamPath],
         },
@@ -149,6 +151,7 @@ std.manifestYamlDoc(
             'Vault Files',
           ],
           summary: 'Append content to a new or existing file.\n',
+          operationId: 'post_vault_filename',
           description: "Appends content to the end of an existing note. If the specified file does not yet exist, it will be created as an empty file.\n\nIf you would like to insert text relative to a particular heading, block reference, or frontmatter field instead of appending to the end of the file, see 'patch'.\n",
           parameters+: [ParamPath],
         },
@@ -157,6 +160,7 @@ std.manifestYamlDoc(
             'Vault Files',
           ],
           summary: 'Partially update content in an existing note.\n',
+          operationId: 'patch_vault_filename',
           description: 'Inserts content into an existing note relative to a heading, block refeerence, or frontmatter field within that document.\n\n' + Patch.description,
           parameters+: [ParamPath],
         },
@@ -165,6 +169,7 @@ std.manifestYamlDoc(
             'Vault Files',
           ],
           summary: 'Delete a particular file in your vault.\n',
+          operationId: 'delete_vault_filename',
           parameters: Delete.parameters + [ParamPath],
         },
       },
@@ -174,6 +179,7 @@ std.manifestYamlDoc(
             'Vault Directories',
           ],
           summary: 'List files that exist in the root of your vault.\n',
+          operationId: 'get_vault',
           description: 'Lists files in the root directory of your vault.\n\nNote: that this is exactly the same API endpoint as the below "List files that exist in the specified directory." and exists here only due to a quirk of this particular interactive tool.\n',
           responses: {
             '200': {
@@ -219,6 +225,7 @@ std.manifestYamlDoc(
             'Vault Directories',
           ],
           summary: 'List files that exist in the specified directory.\n',
+          operationId: 'get_vault_pathToDirectory',
           parameters: [
             {
               name: 'pathToDirectory',
@@ -275,6 +282,7 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Get current periodic note for the specified period.\n',
+          operationId: 'get_periodic_period',
           parameters+: [ParamPeriod],
         },
         put: Put {
@@ -282,6 +290,7 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Update the content of the current periodic note for the specified period.\n',
+          operationId: 'put_periodic_period',
           parameters+: [ParamPeriod],
         },
         post: Post {
@@ -289,6 +298,7 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Append content to the current periodic note for the specified period.\n',
+          operationId: 'post_periodic_period',
           description: 'Note that this will create the relevant periodic note if necessary.\n',
           parameters+: [ParamPeriod],
         },
@@ -297,7 +307,8 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Partially update content in the current periodic note for the specified period.\n',
-          description: 'Inserts content into the current periodic note for the specified period relative to a heading, block refeerence, or frontmatter field within that document.\n\n' + Patch.description,
+          operationId: 'patch_periodic_period',
+          description: 'Insert content into the current periodic note for the specified period relative to a heading, block reference, or frontmatter field. See plugin documentation for examples.',
           parameters+: [ParamPeriod],
         },
         delete: Delete {
@@ -305,6 +316,7 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Delete the current periodic note for the specified period.\n',
+          operationId: 'delete_periodic_period',
           parameters+: [ParamPeriod],
         },
       },
@@ -314,6 +326,7 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Get the periodic note for the specified period and date.\n',
+          operationId: 'get_periodic_period_year_month_day',
           parameters+: [ParamYear, ParamMonth, ParamDay, ParamPeriod],
         },
         put: Put {
@@ -321,6 +334,7 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Update the content of the periodic note for the specified period and date.\n',
+          operationId: 'put_periodic_period_year_month_day',
           parameters+: [ParamYear, ParamMonth, ParamDay, ParamPeriod],
         },
         post: Post {
@@ -328,6 +342,7 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Append content to the periodic note for the specified period and date.\n',
+          operationId: 'post_periodic_period_year_month_day',
           description: 'This will create the relevant periodic note if necessary.\n',
           parameters+: [ParamYear, ParamMonth, ParamDay, ParamPeriod],
         },
@@ -336,6 +351,7 @@ std.manifestYamlDoc(
             'Periodic Notes',
           ],
           summary: 'Partially update content in the periodic note for the specified period and date.\n',
+          operationId: 'patch_periodic_period_year_month_day',
           description: 'Inserts content into a periodic note relative to a heading, block refeerence, or frontmatter field within that document.\n\n' + Patch.description,
           parameters+: [ParamYear, ParamMonth, ParamDay, ParamPeriod],
         },
@@ -345,6 +361,7 @@ std.manifestYamlDoc(
           ],
           summary: 'Delete the periodic note for the specified period and date.\n',
           description: 'Deletes the periodic note for the specified period.\n',
+          operationId: 'delete_periodic_period_year_month_day',
           parameters+: [ParamYear, ParamMonth, ParamDay, ParamPeriod],
         },
       },
@@ -354,6 +371,7 @@ std.manifestYamlDoc(
             'Commands',
           ],
           summary: 'Get a list of available commands.\n',
+          operationId: 'get_commands',
           responses: {
             '200': {
               description: 'A list of available commands.',
@@ -402,6 +420,7 @@ std.manifestYamlDoc(
             'Commands',
           ],
           summary: 'Execute a command.\n',
+          operationId: 'post_commands_commandId',
           parameters: [
             {
               name: 'commandId',
@@ -435,7 +454,8 @@ std.manifestYamlDoc(
           tags: [
             'Search',
           ],
-          summary: 'Search for documents matching a specified search query\n',
+          summary: 'Search for documents matching a specified search query\n'
+          operationId: 'post_search',
           description: 'Evaluate a query against files in your vault. Provide the query in the request body using either Dataview DQL or JSON Logic, chosen via the `Content-Type` header.\n'
           requestBody: {
             required: true,
@@ -539,7 +559,8 @@ std.manifestYamlDoc(
           tags: [
             'Search',
           ],
-          summary: 'Search for documents matching a specified text query\n',
+          summary: 'Search for documents matching a specified text query\n'
+          operationId: 'post_search_simple',
           parameters: [
             {
               name: 'query',
@@ -623,6 +644,7 @@ std.manifestYamlDoc(
             'Open',
           ],
           summary: 'Open the specified document in the Obsidian user interface.\n',
+          operationId: 'post_open_filename',
           description: 'Note: Obsidian will create a new document at the path you have\nspecified if such a document did not already exist.\n',
           parameters: [
             {
@@ -658,6 +680,7 @@ std.manifestYamlDoc(
             'System',
           ],
           summary: 'Returns basic details about the server.\n',
+          operationId: 'get_root',
           description: 'Returns basic details about the server as well as your authentication status.\n\nThis is the only API request that does *not* require authentication.\n',
           responses: {
             '200': {
@@ -706,6 +729,7 @@ std.manifestYamlDoc(
             'System',
           ],
           summary: 'Returns OpenAPI YAML document describing the capabilities of this API.\n',
+          operationId: 'get_openapiyaml',
           responses: {
             '200': {
               description: 'Success',
@@ -719,6 +743,7 @@ std.manifestYamlDoc(
             'System',
           ],
           summary: 'Returns the certificate in use by this API.\n',
+          operationId: 'get_obsidian_local_rest_apicrt',
           responses: {
             '200': {
               description: 'Success',
