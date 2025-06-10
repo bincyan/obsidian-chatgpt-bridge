@@ -16,3 +16,10 @@ This is particularly useful if you need to interact with Obsidian from a browser
 ## Credits
 
 This was inspired by [Vinzent03](https://github.com/Vinzent03)'s [advanced-uri plugin](https://github.com/Vinzent03/obsidian-advanced-uri) with hopes of expanding the automation options beyond the limitations of custom URL schemes.
+
+## About this fork
+
+This project is forked from [coddingtonbear/obsidian-local-rest-api](https://github.com/coddingtonbear/obsidian-local-rest-api). Many thanks to **@coddingtonbear** for the original concept. While the original plugin works well, its endpoints were not ideal for ChatGPT usage. This fork adjusts endpoint descriptions and adds `context-type` support so that ChatGPT can use the API directly.
+
+For instructions on integrating this plugin with GPTs, please see <https://github.com/bincyan/obsidian-chatgpt-gpts-integration>.
+
