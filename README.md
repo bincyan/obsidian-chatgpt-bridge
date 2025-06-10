@@ -23,3 +23,16 @@ This project is forked from [coddingtonbear/obsidian-local-rest-api](https://git
 
 For instructions on integrating this plugin with GPTs, please see <https://github.com/bincyan/obsidian-chatgpt-gpts-integration>.
 
+## Release Process
+
+When a git tag is pushed, a GitHub Actions workflow will automatically build the
+plugin and regenerate `docs/openapi.yaml`. The workflow runs `npm run build-docs`
+before `npm run build` so that the latest OpenAPI specification is embedded in
+the release artifacts. After building, the workflow commits the updated
+`docs/openapi.yaml` back to the `main` branch so the repository always contains
+the newest spec.
+
+The build output (`main.js` with the bundled OpenAPI spec) is **not** committed
+to the repository. The workflow generates these files on the fly and uploads
+them as release assets.
+
