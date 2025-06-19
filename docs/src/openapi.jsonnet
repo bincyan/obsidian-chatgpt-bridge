@@ -456,7 +456,7 @@ std.manifestYamlDoc(
           ],
           summary: 'Search for documents matching a specified search query\n',
           operationId: 'post_search',
-          description: 'Evaluate a query against files in your vault. Provide the query in the request body using either Dataview DQL or JSON Logic, chosen via the `Content-Type` header.\n'
+          description: 'Evaluate a query against files in your vault. Provide the query in the request body using either Dataview DQL or JSON Logic, chosen via the `Content-Type` header.\n',
           requestBody: {
             required: true,
             content: {
@@ -559,7 +559,7 @@ std.manifestYamlDoc(
           tags: [
             'Search',
           ],
-          summary: 'Search for documents matching a specified text query\n'
+          summary: 'Search for documents matching a specified text query\n',
           operationId: 'post_search_simple',
           parameters: [
             {
