@@ -23,6 +23,12 @@ This project is forked from [coddingtonbear/obsidian-local-rest-api](https://git
 
 For instructions on integrating this plugin with GPTs, please see <https://github.com/bincyan/obsidian-chatgpt-gpts-integration>.
 
+## Road Map
+
+This project will act as a bridge to ChatGPT and other LLM agents. Future plans include adding MCP-style permission controls and other mechanisms to securely manage access.
+
+Make sure you follow this project and my website to keep up with my work.
+
 ## Release Process
 
 When a git tag is pushed, a GitHub Actions workflow will automatically build the
