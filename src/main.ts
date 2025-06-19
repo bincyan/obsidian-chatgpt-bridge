@@ -147,7 +147,7 @@ export default class LocalRestApi extends Plugin {
 
     this.refreshServerState();
 
-    this.app.workspace.trigger("obsidian-local-rest-api:loaded");
+    this.app.workspace.trigger("obsidian-chatgpt-bridge:loaded");
   }
 
   getPublicApi(pluginManifest: PluginManifest): LocalRestApiPublicApi {
@@ -257,8 +257,8 @@ class LocalRestApiSettingTab extends PluginSettingTab {
       !getCertificateIsUptoStandards(parsedCertificate);
 
     containerEl.empty();
-    containerEl.classList.add("obsidian-local-rest-api-settings");
-    containerEl.createEl("h2", { text: "Local REST API" });
+    containerEl.classList.add("obsidian-chatgpt-bridge-settings");
+    containerEl.createEl("h2", { text: "LLM Bridges" });
     containerEl.createEl("h3", { text: "How to Access" });
 
     const apiKeyDiv = containerEl.createEl("div");
@@ -266,7 +266,7 @@ class LocalRestApiSettingTab extends PluginSettingTab {
 
     const availableApis = apiKeyDiv.createEl("p");
     availableApis.innerHTML = `
-      You can access Obsidian Local REST API via the following URLs:
+      You can access LLM Bridges via the following URLs:
     `;
 
     const connectionUrls = apiKeyDiv.createEl("table", { cls: "api-urls" });
@@ -407,7 +407,7 @@ class LocalRestApiSettingTab extends PluginSettingTab {
       shouldRegenerateCertificateDiv.innerHTML = `
         <b>You should re-generate your certificate!</b>
         Your certificate was generated using earlier standards than
-        are currently used by Obsidian Local REST API. Some systems
+        are currently used by LLM Bridges. Some systems
         or tools may not accept your certificate with its current
         configuration, and re-generating your certificate may
         improve compatibility with such tools.  To re-generate your
@@ -673,7 +673,7 @@ export const getAPI = (
   app: App,
   manifest: PluginManifest
 ): LocalRestApiPublicApi | undefined => {
-  const plugin = app.plugins.plugins["obsidian-local-rest-api"];
+  const plugin = app.plugins.plugins["obsidian-chatgpt-bridge"];
   if (plugin) {
     return (plugin as unknown as LocalRestApi).getPublicApi(manifest);
   }

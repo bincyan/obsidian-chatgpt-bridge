@@ -1,5 +1,5 @@
 {
-  "name": "obsidian-local-rest-api",
+  "name": "obsidian-chatgpt-bridge",
   "version": "3.2.0",
   "description": "Get, change or otherwise interact with your notes in Obsidian via a REST API.",
   "main": "main.js",
