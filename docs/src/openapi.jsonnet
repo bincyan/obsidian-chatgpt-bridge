@@ -15,8 +15,8 @@ std.manifestYamlDoc(
   {
     openapi: '3.1.0',
     info: {
-      title: 'Local REST API for Obsidian',
-      description: "Interact with your Obsidian notes through this local REST API.\n\nPress the 'Authorize' button and supply your API key from plugin settings before sending requests. If your browser warns about the self-signed certificate, add it as a trusted certificate.",
+      title: 'LLM Bridges for Obsidian',
+      description: "Interact with your Obsidian notes through this LLM Bridge API.\n\nPress the 'Authorize' button and supply your API key from plugin settings before sending requests. If your browser warns about the self-signed certificate, add it as a trusted certificate.",
       version: '1.0',
     },
     servers: [
@@ -52,7 +52,7 @@ std.manifestYamlDoc(
     components: {
       securitySchemes: {
         apiKeyAuth: {
-          description: 'Find your API Key in your Obsidian settings\nin the "Local REST API" section under "Plugins".\n',
+          description: 'Find your API Key in your Obsidian settings\nin the "LLM Bridges" section under "Plugins".\n',
           type: 'http',
           scheme: 'bearer',
         },
@@ -701,7 +701,7 @@ std.manifestYamlDoc(
                             type: 'string',
                             description: 'Obsidian plugin API version',
                           },
-                          'self': {
+                          self: {
                             type: 'string',
                             description: 'Plugin version.',
                           },
@@ -709,7 +709,7 @@ std.manifestYamlDoc(
                       },
                       service: {
                         type: 'string',
-                        description: "'Obsidian Local REST API'",
+                        description: "'LLM Bridges for Obsidian'",
                       },
                       authenticated: {
                         type: 'boolean',

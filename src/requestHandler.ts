@@ -258,7 +258,7 @@ export default class RequestHandler {
         obsidian: apiVersion,
         self: this.manifest.version,
       },
-      service: "Obsidian Local REST API",
+      service: "LLM Bridges for Obsidian",
       authenticated: this.requestIsAuthenticated(req),
       certificateInfo:
         this.requestIsAuthenticated(req) && certificate
