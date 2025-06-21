@@ -701,7 +701,7 @@ std.manifestYamlDoc(
                             type: 'string',
                             description: 'Obsidian plugin API version',
                           },
-                          self: {
+                          'self': {
                             type: 'string',
                             description: 'Plugin version.',
                           },
